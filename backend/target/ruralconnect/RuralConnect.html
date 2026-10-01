@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RuralConnect — Rural Supply Chain</title>
+  <meta name="description" content="RuralConnect connects rural producers with urban businesses." />
+  <link rel="stylesheet" href="css/style.css">
+
+<style id="ruralconnect-ai-css">
+#rcAiFab{position:fixed;right:20px;bottom:20px;z-index:9999;border:0;border-radius:999px;padding:13px 18px;background:#166534;color:#fff;font-weight:700;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.20)}
+#rcAiPanel{display:none;position:fixed;right:20px;bottom:78px;z-index:9999;width:min(370px,calc(100vw - 32px));height:520px;background:#fff;border:1px solid #d1d5db;border-radius:18px;box-shadow:0 18px 50px rgba(0,0,0,.22);overflow:hidden;font-family:inherit}
+#rcAiHeader{background:#166534;color:#fff;padding:14px 16px;display:flex;justify-content:space-between;align-items:center}
+#rcAiHeader strong{display:block;font-size:16px}#rcAiHeader small{opacity:.85}
+#rcAiClose{border:0;background:transparent;color:#fff;font-size:22px;cursor:pointer}
+#rcAiMessages{height:380px;overflow-y:auto;padding:14px;background:#f8fafc}
+.rc-ai-msg{margin:9px 0;display:flex}.rc-ai-msg.user{justify-content:flex-end}
+.rc-ai-bubble{max-width:84%;padding:10px 12px;border-radius:14px;line-height:1.4;font-size:14px;white-space:pre-wrap}
+.rc-ai-msg.bot .rc-ai-bubble{background:#fff;border:1px solid #e5e7eb}.rc-ai-msg.user .rc-ai-bubble{background:#166534;color:#fff}
+#rcAiQuick{display:flex;gap:6px;overflow-x:auto;padding:8px 10px 0}
+#rcAiQuick button{white-space:nowrap;border:1px solid #d1d5db;background:#fff;border-radius:999px;padding:6px 9px;cursor:pointer;font-size:12px}
+#rcAiForm{display:flex;gap:8px;padding:10px;border-top:1px solid #e5e7eb}
+#rcAiInput{flex:1;min-width:0;border:1px solid #d1d5db;border-radius:10px;padding:10px;outline:none}
+#rcAiForm button{border:0;border-radius:10px;padding:0 14px;background:#166534;color:#fff;font-weight:700;cursor:pointer}
+</style>
+
+</head>
+<body>
+  <div id="toast" class="toast"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#home">
+      <span class="brand-mark">🌿</span>
+      <span>Rural<span>Connect</span></span>
+    </a>
+    <nav id="mainNav"></nav>
+    <button class="cart-mini" onclick="go('#cart')" aria-label="Open cart">🛒 <b id="cartCount">0</b></button>
+  </header>
+
+  <main id="app"></main>
+
+  <footer class="footer">
+    <div class="footer-brand">🌿 RuralConnect</div>
+    <div>People • Produce • Prosperity</div>
+    <div>A cleaner supply chain for a brighter tomorrow.</div>
+  </footer>
+
+  
+
+<button id="rcAiFab" type="button" onclick="rcAiToggle()">🤖 RuralConnect Helper</button>
+<div id="rcAiPanel" aria-label="RuralConnect AI Assistant">
+  <div id="rcAiHeader">
+    <div><strong>🤖 RuralConnect Helper</strong><small>Simple demo helper</small></div>
+    <button id="rcAiClose" type="button" onclick="rcAiToggle()">×</button>
+  </div>
+  <div id="rcAiMessages"></div>
+  <div id="rcAiQuick">
+    <button type="button" onclick="rcAiQuick('Show me products under ₹100')">Under ₹100</button>
+    <button type="button" onclick="rcAiQuick('What products are available?')">Products</button>
+    <button type="button" onclick="rcAiQuick('How can I sell my products?')">Sell products</button>
+    <button type="button" onclick="rcAiQuick('Track my order')">Track order</button>
+  </div>
+  <form id="rcAiForm" onsubmit="rcAiSend(event)">
+    <input id="rcAiInput" autocomplete="off" placeholder="Ask something about RuralConnect...">
+    <button type="submit">Send</button>
+  </form>
+</div>
+
+
+
+
+
+<script src="js/app.js"></script>
+<script src="js/ai-demo.js"></script>
+<script src="js/server-mode.js"></script>
+</body>
+</html>
